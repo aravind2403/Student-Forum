@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FIERA</title>
+    <link href="blog.css" rel="stylesheet">
+  </head>
+  <body>
+	<div id="Container" style="width:1330px;">
+<div id="Header">
+<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+		 <a class="blog-nav-item" href="index.html">Home</a>
+          <a class="blog-nav-item" href="blog.html">Blog</a>
+          <a class="blog-nav-item" href="profile.html">My Profile</a>
+          <a class="blog-nav-item" href="inbox.html">Inbox</a>
+          <a class="blog-nav-item" href="send.html">Send Message</a>
+          <a class="blog-nav-item" href="contact.html">Contact</a>
+			<a class="blog-nav-item1" href="main.html" style="position:right;">Signout</a>
+        </nav>
+      </div>
+    </div>
+</div>
+
+<div id="Menu" style="font-color:black;text-align:center; width:275px; float:left;">
+   
+            
+            <center>
+				<br><br><br>
+				<a class="topic" href="#"><h4>Messages</h4></a>
+				 <a class="topics" href="send.html">Compose</a><br>
+              <a class="topics" href="draft.html">Drafts</a><br>
+              <a class="topics" href="sent.html">Sent messages</a><br>
+
+			
+             </center>
+         
+          
+</div>
+
+<div id="Content" style="width:1000px; float:right;"><center></center>
+ <div class="blog-header" >
+        <h2 class="blog-title">Communicate</h2>
+        <p class="lead blog-description">Portal of communication.</p>
+		
+
+
+
+		<form method="post" action="send.jsp">
+
+<table>
+<tr>
+<td>
+<br>To</td><td></td><td><br><input type="textbox" name="to1"></td></tr><br><Br>
+<tr><td><br>Subject</td><td></td><td><br><input type="textbox" name="sub1"></td></tr>
+<tr><td><br>Message</td><td></td><td><br><textarea name="mess"></textarea></td></tr>
+<br>
+</table><br><Br>
+<input type="submit" value="Send">
+
+     </form>
+
+	 </div>
+	  </div>
+
+	    <%@ page import="javax.servlet.*" %>
+<%@ page import="javax.servlet.http.*" %>
+<%@ page import="java.sql.*" %>
+          <%
+        Connection con = null;
+	PreparedStatement ps=null;
+	PreparedStatement pt,po=null;
+		
+         String to1 = request.getParameter("to1");
+        String sub1 = request.getParameter("sub1");
+		String mess=request.getParameter("mess");
+        try {
+              Class.forName("com.mysql.jdbc.Driver");
+          
+			  
+			     String url = "jdbc:mysql://localhost:3306/"+to1;
+		
+	con = DriverManager.getConnection(url,"root","");
+
+	PreparedStatement p1=null;
+	p1=con.prepareStatement("insert into sent1 values(?)");
+	p1.setString(1,to1);
+	p1.executeUpdate();
+	out.println("values inserttd");
+con.close();
+        } catch (Exception e) {e.toString(); }
+
+%>
+	  
+	  
+	  
+	  
+	  
+  </body>
+</html>

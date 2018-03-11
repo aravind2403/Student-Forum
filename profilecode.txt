@@ -1,0 +1,45 @@
+	
+		<%            
+			      con = DriverManager.getConnection("jdbc:mysql://localhost:3306/blog","root","");
+				 
+		Statement stmt=con.createStatement();
+	ResultSet rs=stmt.executeQuery("select * from blogusers where uname="+uname);
+	b=rs.next();
+		if(b==false)
+			out.println("No records found");
+		else
+		{
+			out.println("<html>");
+			out.println("<p>");
+	
+		
+			out.println("<tr>");
+			out.println("<td><Br>Username</td>");
+			out.println("<td><br>"+rs.getString("name")+"</td>");
+			out.println("</tr>");
+			out.println("<br><Br>");
+	
+			
+			out.println("<tr>");
+			out.println("<td><br>Password</td>");
+				out.println("<td><br>"+rs.getString("name")+"</td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td><br>Age</td>");
+				out.println("<td><br>"+rs.getString("age")+"</td>");
+			out.println("</tr>");
+			
+			
+			out.println("<tr>");
+			out.println("<td><Br>Email</td>");
+				out.println("<td><br>"+rs.getString("email")+"</td>");
+			out.println("</tr>");
+			
+			
+			out.println("<tr>");
+			out.println("<td><Br>Contact</td>");
+	out.println("<td><br>"+rs.getString("no")+"</td>");
+			out.println("</tr>");
+		
+
+	%>
